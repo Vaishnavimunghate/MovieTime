@@ -1,0 +1,26 @@
+{% extends "movieTime/base.html" %}
+{% block title %}MovieTime{% endblock title %}
+{% block content %}
+	<div class="container">
+        <div class="row">
+		{% for movie in movies %}
+            <div>
+                <div class="content-section">
+                	<a class = "movie-img" href="#">
+                        <img src="{{ movie.image.url }}" class="img-responsive">
+                    </a>
+                    <div>
+                        <h2>Movie: {{ movie.movie_name }}</h2>
+                        <h4>Genre: {{ movie.genre }}</h4>
+                        {% if user.is_authenticated %}
+                            <a href="{% url 'detail' movie.id %}" class="btn btn-primary btn-sm" role="button">Book Tickets</a>
+                        {% else %}
+                            <a href="{% url 'login' %}" class="btn btn-primary btn-sm" role="button">Book Tickets</a>
+                        {% endif %}    
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+    </div>	
+{% endblock content %}

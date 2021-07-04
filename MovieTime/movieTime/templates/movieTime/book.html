@@ -1,0 +1,16 @@
+{% extends "movieTime/base2.html" %}
+{% block title %}MovieTime-Book Tickects{% endblock title %}
+{% load crispy_forms_tags %}
+{% block content %}
+	<div class="container">
+        <div class="content-section">
+                    <h3>Movie name: {{ ticket.movie }}</h3>
+                    <h4>Date:{{ ticket.date }} Show Time:{{ ticket.time }} </h4>
+                    <h5>Theater:{{ ticket.theater_name }}</h5>
+                    <h5>Seat Type:{{ ticket.seat_type }}</h5>
+                    <h5>Number of tickets:{{ ticket.number }}</h5>
+                    <h5>The price to be paid is:{{ price }}</h5>
+                    <a href="{% url 'pay' %}" class="btn btn-primary btn-sm" role="button">Make Payment</a>
+        </div>
+    </div>
+{% endblock content %}

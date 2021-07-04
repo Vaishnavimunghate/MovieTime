@@ -1,0 +1,11 @@
+{% extends "movieTime/base2.html" %}
+{% block title %}MovieTime - Cancel Tickets{% endblock title %}
+{% block content %}
+	<div class="container">
+                <div class="content-section">
+                	<h3>Your Ticket has been Cancelled!</h3>
+                    <h2>Money refunded will be {{ price }}</h2>
+                    <a href="{% url 'bookings' %}" class="btn btn-primary btn-sm" role="button">Proceed</a>
+                </div>
+	</div>
+{% endblock content %}

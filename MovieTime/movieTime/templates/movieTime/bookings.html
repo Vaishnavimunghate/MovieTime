@@ -1,0 +1,17 @@
+{% extends "movieTime/base.html" %}
+{% block title %}MovieTime - Bookings{% endblock title %}
+{% block content %}
+	<div class="container">
+		{% for ticket in user.ticket_set.all %}
+                <div class="content-section">
+                	<h3>Movie: {{ ticket.movie }}</h3>
+                    <h4>Show Date: {{ ticket.date }} </h4> 
+                    <h4>Show Time: {{ ticket.time }} </h4>
+                    <h5>Theater: {{ ticket.theater_name }}</h5>
+                    <h5>Seat Type: {{ ticket.seat_type }}</h5>
+                    <h5>Number of Tickets: {{ ticket.number }}</h5>
+                    <a href="{% url 'cancel' ticket.id %}" class="btn btn-primary btn-sm" role="button">Cancel Tickets</a>
+                </div>
+        {% endfor %}
+	</div>
+{% endblock content %}

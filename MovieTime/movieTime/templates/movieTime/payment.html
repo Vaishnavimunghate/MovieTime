@@ -1,0 +1,24 @@
+{% extends "movieTime/base2.html" %}
+{% load crispy_forms_tags %}
+{% block title %}MovieTime-payment{% endblock title %}
+{% block content %}
+	<div class="container">
+		<div class="content-section">
+		<h2>Payment Gateway</h2>
+		<h3>Instructions</h3>
+		<p>1. Card Number should contain exactly 12 digits.</p>
+		<p>	2. Some fields are Case Sensitive.</p>
+		<p>	3. CVV should contain exactly 3 digits.</p>
+		<p>	4. Card Type are Credit and Debit. Do not mention anything else.</p>
+		<P>	5. Mention Expiry Month as MM.</P>
+		<p>	6. Mention Expiry Year as YY that is last digits of year.</p>
+		<p>	7. Holder Name may or may not be in Capital.</p>
+		<h3>Form</h3>
+		<form method="post">
+			{% csrf_token %}
+			{{ p_form|crispy }}
+			<button type="submit">Submit</button>
+		</form>
+		</div>
+	</div>
+{% endblock content %}

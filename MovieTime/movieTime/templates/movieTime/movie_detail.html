@@ -1,0 +1,31 @@
+{% extends "movieTime/base2.html" %}
+{% block title %}MovieTime - Movie{% endblock title %}
+{% load crispy_forms_tags %}
+{% block content %}
+	<div class="content-section">
+        <div>
+        	<a class = "movie-img" href="#">                         
+                <img src="{{ movie.image.url }}" class="img-responsive">
+            </a>
+        </div>
+         <div>
+            <h2>Movie name:{{ movie.movie_name }}</h2>
+            <h4>Genre:{{ movie.genre }}</h4>
+            <a href="{% url 'home' %}" class="btn btn-primary btn-sm" role="button">Back</a>
+            <h5>Search for Tickets here</h5>
+            {% for shows in movie.shows_set.all %}
+                <div class="content-section">
+                    <h4>Show Date:{{ shows.date }}  Show Time:{{ shows.time }} </h4>
+                    <h5>Theater: {{ shows.theater_name }}</h5>
+                    <h5>gold seats available are: {{ shows.gold_seats }}</h5>
+                    <h5>silver seats available are: {{ shows.silver_seats }}</h5>
+                    <form method="post" action="{% url 'book' movie.id shows.id %}">
+                        {% csrf_token %}
+                        {{ t_form|crispy }}
+                        <button class="btn btn-primary btn-sm" type="submit">Submit</button>
+                    </form>
+                </div>
+            {% endfor %}
+        </div>
+    </div>	
+{% endblock content %}
